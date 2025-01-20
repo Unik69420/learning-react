@@ -1,23 +1,79 @@
-# Props Project
+# Learning React
 
-This project is a simple React application created to practice and understand the concept of props in React. It includes working with props, using Tailwind CSS for styling, setting default props, importing components, assigning values to props, and using PropTypes for type-checking.
+This repository is dedicated to my journey of learning React. The project is built using **Vite**, styled with **Tailwind CSS**, and written in **JavaScript**.
 
 ## Features
 
-- **Understanding Props:**
-  - Passing data between components using props.
-  - Assigning values dynamically to props.
-- **Default Props:**
-  - Setting default values to props to ensure components function properly even if no values are provided.
-- **PropTypes:**
-  - Ensuring type safety and easier debugging by using PropTypes for better practice.
-- **Component Importing:**
-  - Learning how to import and export React components efficiently.
-- **Styling with Tailwind CSS:**
-  - Utilizing Tailwind CSS for simple styling and layout adjustments.
+- Hands-on practice with React concepts like components, state, props, and hooks.
+- Integration of Tailwind CSS for styling.
+- Built using Vite for fast development and a modern build setup.
 
-## Technologies Used
+## Getting Started
 
-- **React JS** - For building the UI components.
-- **Tailwind CSS** - For styling the components.
-- **PropTypes** - For type-checking props.
+Follow these steps to set up and run the project locally.
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v14.18.0 or newer)
+- npm (comes with Node.js) or [Yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. Create a new Vite project:
+   ```bash
+   npm create vite@latest
+   ```
+
+- When prompted, enter learning-react as the project name.
+- Select React as the framework and JavaScript as the variant.
+
+2. Navigate to the project directory:
+   ```bash
+   cd learning-react
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Install Tailwind CSS:
+   ```bash
+   npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init
+   ```
+
+- Configure tailwind.config.js and add Tailwind directives to your src/index.css:
+  ```bash
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  ```
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+6. Open your browser and navigate to http://localhost:3000 (or the port shown in your terminal).
+
+### Technologies Used
+
+- React: JavaScript library for building user interfaces.
+- Vite: A fast and modern build tool for web projects.
+- Tailwind CSS: Utility-first CSS framework for rapid UI development.
+- JavaScript (ES6+): The primary programming language for the project.
+
+### Folder Structure
+
+```bash
+learning-react/
+├── public/         # Static assets
+├── src/            # Source code
+│   ├── components/ # React components
+│   ├── pages/      # Page components
+│   ├── App.jsx     # Main app file
+│   └── index.js    # Entry point
+├── tailwind.config.js # Tailwind CSS configuration
+├── package.json    # Project metadata and dependencies
+└── vite.config.js  # Vite configuration
+```
