@@ -1,10 +1,11 @@
 import React from "react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 const App = () => {
   let [length, setlength] = useState(8);
   let [numberAllowed, setNumberAllowed] = useState(false);
   let [charAllowed, setCharAllowed] = useState(false);
   let [password, setPassword] = useState("");
+  let passwordRef = useRef(null);
   let passwordGenerator = useCallback(() => {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -12,9 +13,19 @@ const App = () => {
     if (charAllowed) str += "!@#$%^&*(){}:<>_+-=`?~";
     for (let i = 0; i <= length; i++) {
       let char = Math.floor(Math.random() * str.length + 1);
-      pass = str.charAt(char);
+      pass += str.charAt(char);
     }
     setPassword(pass);
+  }, [length, numberAllowed, charAllowed, setPassword]);
+
+  let copyPasswordToClipBoard = useCallback(() => {
+    passwordRef.current.select();
+    passwordRef.current.setSelectionRange(0, 100);
+
+    window.navigator.clipboard.writeText(password);
+  }, [password]);
+  useEffect(() => {
+    passwordGenerator();
   }, [length, numberAllowed, charAllowed, setPassword]);
   return (
     <>
@@ -27,8 +38,10 @@ const App = () => {
             className="outline-none w-full bg-white py-1 px-3 text-black"
             placeholder="Password"
             readOnly
+            ref={passwordRef}
           />
           <button
+            onClick={copyPasswordToClipBoard}
             className="
           outline-none px-4 py-1 text-white shadow-lg text-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700
           "
@@ -67,7 +80,7 @@ const App = () => {
               defaultChecked={charAllowed}
               id="characterInput"
               onChange={() => {
-                setNumberAllowed((prev) => !prev);
+                setCharAllowed((prev) => !prev);
               }}
             />
             <label htmlFor="characterInput">Characters</label>
